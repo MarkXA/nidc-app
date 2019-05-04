@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<pages:TimeSlotPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:pages="clr-namespace:NidcApp.Pages;assembly=NidcApp"
+                        xmlns:controls="clr-namespace:NidcApp.Controls;assembly=NidcApp"
+                        xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+                        x:Class="NidcApp.Pages.TimeSlotPage"
+                        Title="{Binding TimeSlot.Value.Title}">
+    <StackLayout>
+        <Label Text="{Binding TimeSlot.Value.Description}" IsVisible="{Binding TimeSlot.Value.HasDescription}"
+               FontSize="20" FontAttributes="Bold" Margin="15,5" />
+        <Label Text="{Binding TimeSlot.Value.Description}" IsVisible="{Binding TimeSlot.Value.IsPlenary}"
+               FontSize="20" FontAttributes="Bold" Margin="15,5" />
+        <ListView ItemsSource="{Binding TimeSlot.Value.Sessions}" HasUnevenRows="True" ItemSelected="OnSessionSelected" IsVisible="{Binding TimeSlot.Value.HasSessions}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <controls:AgendaHeading Text="{Binding Room.Title}" />
+                            <Grid Margin="15,0,15,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Column="0" Grid.Row="0">
+                                    <controls:ItemsControl ItemsSource="{Binding Speakers}">
+                                        <controls:ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <abstractions:CircleImage Source="{Binding ImageUrl}"
+                                                                          WidthRequest="100" HeightRequest="100"
+                                                                          Aspect="AspectFill">
+                                                    <abstractions:CircleImage.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnSpeakerTapped" />
+                                                    </abstractions:CircleImage.GestureRecognizers>
+                                                </abstractions:CircleImage>
+                                            </DataTemplate>
+                                        </controls:ItemsControl.ItemTemplate>
+                                    </controls:ItemsControl>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Grid.Row="0">
+                                    <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                    <controls:ItemsControl ItemsSource="{Binding Speakers}">
+                                        <controls:ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Text="{Binding Title}" FontAttributes="Bold">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnSpeakerTapped" />
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </DataTemplate>
+                                        </controls:ItemsControl.ItemTemplate>
+                                    </controls:ItemsControl>
+                                </StackLayout>
+                                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding Description}" />
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</pages:TimeSlotPageBase>

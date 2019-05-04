@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<pages:AgendaPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:controls="clr-namespace:NidcApp.Controls;assembly=NidcApp"
+                      xmlns:pages="clr-namespace:NidcApp.Pages;assembly=NidcApp"
+                      x:Class="NidcApp.Pages.AgendaPage"
+                      Title="Agenda">
+    <Grid>
+        <ListView ItemsSource="{Binding TimeSlots.Value}" HasUnevenRows="True" ItemSelected="OnSessionSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <controls:AgendaHeading Text="{Binding Title}" />
+                            <controls:AgendaSession Room="Plenary" Title="{Binding Description}" IsVisible="{Binding IsPlenary}" />
+                            <controls:AgendaLine Text="{Binding Description}" IsVisible="{Binding HasDescription}" />
+                            <controls:ItemsControl ItemsSource="{Binding Sessions}">
+                                <controls:ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <controls:AgendaSession Room="{Binding Room.Abbreviation}" Title="{Binding Title}"
+                                                                SessionId="{Binding SessionId}" />
+                                    </DataTemplate>
+                                </controls:ItemsControl.ItemTemplate>
+                            </controls:ItemsControl>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</pages:AgendaPageBase>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<pages:FlyoutPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:pages="clr-namespace:NidcApp.Pages;assembly=NidcApp"
+                      xmlns:controls="clr-namespace:NidcApp.Controls;assembly=NidcApp"
+                      x:Class="NidcApp.Pages.FlyoutPage"
+                      Title="NIDC2018"
+                      Icon="hamburger.png"
+                      BackgroundColor="{StaticResource SecondaryBackgroundColor}">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Text="NIDC 2018" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontSize="20" />
+            <ListView Grid.Row="1" ItemsSource="{Binding MenuItems.Value}" ItemSelected="OnMenuItemSelected" BackgroundColor="{StaticResource SecondaryBackgroundColor}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Title}" TextColor="White" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</pages:FlyoutPageBase>

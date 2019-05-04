@@ -9,14 +9,18 @@ namespace NidcApp
 	{
 		public App ()
 		{
-			InitializeComponent();
+#if DEBUG
+		    //LiveReload.Init();
+#endif
+		    
+		    InitializeComponent();
 
-			MainPage = new MainPage();
+			MainPage = new Pages.MainPage();
 		}
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
+		    AppState.Init();
 		}
 
 		protected override void OnSleep ()

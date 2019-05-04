@@ -3,6 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NidcApp.App">
 	<Application.Resources>
-    
+	    <Color x:Key="PrimaryBackgroundColor">#5598b8</Color>
+	    <Color x:Key="SecondaryBackgroundColor">#3d7892</Color>
+
+	    <Style TargetType="NavigationPage">
+	        <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryBackgroundColor}" />
+	        <Setter Property="BarTextColor" Value="White" />
+	    </Style>
 	</Application.Resources>
 </Application>

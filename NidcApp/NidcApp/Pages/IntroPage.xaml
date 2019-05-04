@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NidcApp.Pages.IntroPage"
+             Title="NIDC 2018"
+             BackgroundColor="White">
+    <ScrollView>
+        <StackLayout Margin="15,5">
+            <Image Source="nidc2018.png" Margin="30,5,30,20" HorizontalOptions="Center" />
+            <Label Text="Platinum sponsors" FontSize="20" FontAttributes="Bold"
+                   BackgroundColor="{StaticResource SecondaryBackgroundColor}" TextColor="White"
+                   HorizontalTextAlignment="Center" />
+            <StackLayout Margin="0,0,0,20">
+                <Image Source="bazaarvoice.png" Margin="0,10,0,40" HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BazaarvoiceTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="allstate.png" Margin="0,0,0,40" HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AllstateTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <Label Text="Gold sponsors" FontSize="18" FontAttributes="Bold"
+                   BackgroundColor="{StaticResource SecondaryBackgroundColor}" TextColor="White"
+                   HorizontalTextAlignment="Center" />
+            <StackLayout Margin="50,0,50,20">
+                <Image Source="libertyit.jpg" Margin="0,10,0,40" HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LibertyTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="flexera.jpg" Margin="0,10,0,40" HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="FlexeraTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <Label Text="Silver sponsors" FontSize="16" FontAttributes="Bold"
+                   BackgroundColor="{StaticResource SecondaryBackgroundColor}" TextColor="White"
+                   HorizontalTextAlignment="Center" />
+            <StackLayout Margin="100,0,100,20">
+                <Image Source="pwc.png" Margin="0,10,0,40" HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PwcTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="spotx.png" Margin="0,10,0,40" HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SpotxTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="smashfly.png" Margin="0,10,0,40" HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SmashflyTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

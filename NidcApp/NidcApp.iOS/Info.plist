@@ -23,9 +23,9 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>NidcApp</string>
+	<string>NIDC</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.companyname.NidcApp</string>
+	<string>com.ranyart.NidcApp</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -33,6 +33,6 @@
 	<key>CFBundleName</key>
 	<string>NidcApp</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<string>Assets.xcassets/AppIcons.appiconset</string>
 </dict>
 </plist>
