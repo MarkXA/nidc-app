@@ -8,6 +8,6 @@
         <ColumnDefinition Width="75" />
         <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
-    <Label x:Name="RoomLabel"  Grid.Column="0" FontAttributes="Bold" VerticalOptions="Start" />
+    <Label x:Name="RoomLabel" Grid.Column="0" FontAttributes="Bold" VerticalOptions="Start" />
     <Label x:Name="TitleLabel" Grid.Column="1" VerticalOptions="Start" />
 </Grid>

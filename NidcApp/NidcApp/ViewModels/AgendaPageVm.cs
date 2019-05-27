@@ -5,11 +5,11 @@ using NidcApp.MxaUi;
 
 namespace NidcApp.ViewModels
 {
-    public class AgendaViewModel : BaseViewModel<Unit>
+    public class AgendaPageVm : BaseViewModel<Unit>
     {
-        public MxaProperty<List<TimeSlotVm>> TimeSlots { get; } = new List<TimeSlotVm>();
+        public MxaProperty<List<TimeslotVm>> Timeslots { get; } = new List<TimeslotVm>();
 
-        public AgendaViewModel()
+        public AgendaPageVm()
         {
             WhenActivated(
                 disposables =>
@@ -17,7 +17,7 @@ namespace NidcApp.ViewModels
                     AppState.Conference.SubscribeUi(
                         conf =>
                         {
-                            TimeSlots.Value = conf.TimeSlots.Select(ts => TimeSlotVm.FromTimeSlot(ts, conf)).ToList();
+                            Timeslots.Value = conf.timeslots.Select(ts => TimeslotVm.FromTimeslot(ts, conf)).ToList();
                         });
                 });
         }

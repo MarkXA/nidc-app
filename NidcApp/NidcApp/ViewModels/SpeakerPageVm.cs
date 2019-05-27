@@ -3,11 +3,11 @@ using NidcApp.MxaUi;
 
 namespace NidcApp.ViewModels
 {
-    public class SpeakerViewModel : BaseViewModel<string>
+    public class SpeakerPageVm : BaseViewModel<string>
     {
         public MxaProperty<SpeakerVm> Speaker { get; } = new MxaProperty<SpeakerVm>();
 
-        public SpeakerViewModel()
+        public SpeakerPageVm()
         {
             WhenActivated(
                 disposables =>
@@ -15,7 +15,7 @@ namespace NidcApp.ViewModels
                     AppState.Conference.SubscribeUi(
                         conf =>
                         {
-                            Speaker.Value = conf.Speakers.Where(ts => ts.SpeakerId == Parameter)
+                            Speaker.Value = conf.speakers.Where(ts => ts.id == Parameter)
                                 .Select(ts => SpeakerVm.FromSpeaker(ts, conf))
                                 .FirstOrDefault();
                         });

@@ -1,4 +1,5 @@
-﻿using System.Reactive;
+﻿using System;
+using System.Reactive;
 using NidcApp.MxaUi;
 using NidcApp.ViewModels;
 using Xamarin.Forms;
@@ -14,14 +15,13 @@ namespace NidcApp.Pages
             InitializeComponent();
         }
 
-        private void OnSessionSelected(object sender, SelectedItemChangedEventArgs e)
+        private void ItemTapped(object sender, EventArgs e)
         {
-            if (e.SelectedItem is TimeSlotVm timeSlot && !string.IsNullOrWhiteSpace(timeSlot.TimeSlotId))
-                AppState.NavigatePage.OnNext(new TimeSlotPage(timeSlot.TimeSlotId));
-
-            ((ListView)sender).SelectedItem = null;
+            var timeSlot = (sender as BindableObject)?.BindingContext as TimeslotVm;
+            if (!string.IsNullOrWhiteSpace(timeSlot?.TimeslotId))
+                Shell.Current.GoToAsync($"//agenda/timeslot?slotId={timeSlot.TimeslotId}");
         }
     }
 
-    public class AgendaPageBase : BaseContentPage<AgendaViewModel, Unit> { }
+    public class AgendaPageBase : BaseContentPage<AgendaPageVm, Unit> { }
 }

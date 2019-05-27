@@ -20,7 +20,7 @@ namespace NidcApp.MxaUi
 
         protected BaseContentPage(TParameter param)
         {
-            ViewModel = new TViewModel {Parameter = param, Navigation = Navigation};
+            ViewModel = new TViewModel {Parameter = param};
 
             Appearing += (sender, args) => { ViewModel?.Activate(); };
             Disappearing += (sender, args) =>
@@ -30,7 +30,7 @@ namespace NidcApp.MxaUi
             };
         }
 
-        protected BaseContentPage() : this(default(TParameter)) { }
+        protected BaseContentPage() : this(default) { }
 
         protected IDisposable WhenChanged<T1>(IObservable<T1> o1, Action<T1> action)
         {

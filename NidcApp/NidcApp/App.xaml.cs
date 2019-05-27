@@ -1,36 +1,37 @@
-using System;
+using NidcApp.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
 namespace NidcApp
 {
-	public partial class App : Application
-	{
-		public App ()
-		{
+    public partial class App : Application
+    {
+        public App()
+        {
 #if DEBUG
-		    //LiveReload.Init();
+            //LiveReload.Init();
 #endif
-		    
-		    InitializeComponent();
 
-			MainPage = new Pages.MainPage();
-		}
+            InitializeComponent();
 
-		protected override void OnStart ()
-		{
-		    AppState.Init();
-		}
+            MainPage = new MainPage();
+        }
 
-		protected override void OnSleep ()
-		{
-			// Handle when your app sleeps
-		}
+        protected override void OnStart()
+        {
+            AppState.Init();
+        }
 
-		protected override void OnResume ()
-		{
-			// Handle when your app resumes
-		}
-	}
+        protected override void OnSleep()
+        {
+            // Handle when your app sleeps
+        }
+
+        protected override void OnResume()
+        {
+            // Handle when your app resumes
+        }
+    }
 }

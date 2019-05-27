@@ -22,6 +22,7 @@ namespace NidcApp.Droid
 
             base.OnCreate(bundle);
 
+            Forms.SetFlags("CollectionView_Experimental");
             Forms.Init(this, bundle);
             ImageCircleRenderer.Init();
 

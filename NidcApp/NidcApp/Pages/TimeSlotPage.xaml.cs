@@ -7,9 +7,14 @@ using Xamarin.Forms.Xaml;
 namespace NidcApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TimeSlotPage : TimeSlotPageBase
+    public partial class TimeslotPage : TimeslotPageBase
     {
-        public TimeSlotPage(string timeSlotId) : base(timeSlotId)
+        public TimeslotPage()
+        {
+            InitializeComponent();
+        }
+
+        public TimeslotPage(string timeSlotId) : base(timeSlotId)
         {
             InitializeComponent();
         }
@@ -26,8 +31,9 @@ namespace NidcApp.Pages
         }
     }
 
-    public class TimeSlotPageBase : BaseContentPage<TimeSlotViewModel, string>
+    public class TimeslotPageBase : BaseContentPage<TimeslotPageVm, string>
     {
-        protected TimeSlotPageBase(string timeSlotId) : base(timeSlotId) { }
+        protected TimeslotPageBase() { }
+        protected TimeslotPageBase(string timeSlotId) : base(timeSlotId) { }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -45,6 +46,11 @@ namespace NidcApp.Pages
         private void SmashflyTapped(object sender, EventArgs e)
         {
             Device.OpenUri(new Uri("https://www.smashfly.com/"));
+        }
+
+        private void PinchGestureRecognizer_OnPinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
+        {
+            Trace.Write(e.Status);
         }
     }
 }

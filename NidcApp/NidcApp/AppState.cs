@@ -4,9 +4,8 @@ using System.Net.Http;
 using System.Reactive;
 using System.Reactive.Subjects;
 using System.Reflection;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
-using NidcApp.Model;
+using NidcApp.Models;
 using Xamarin.Forms;
 
 namespace NidcApp
@@ -14,7 +13,6 @@ namespace NidcApp
     public static class AppState
     {
         public static readonly ReplaySubject<Conference> Conference = new ReplaySubject<Conference>(1);
-        public static readonly ReplaySubject<Page> DetailPage = new ReplaySubject<Page>(1);
         public static readonly ReplaySubject<Page> NavigatePage = new ReplaySubject<Page>(1);
         public static readonly Subject<Unit> Refresh = new Subject<Unit>();
 
@@ -27,7 +25,7 @@ namespace NidcApp
                 return;
             initialised = true;
 
-            localPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "filename.db");
+            localPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "conference.json");
 
             Refresh.Subscribe(OnRefresh);
 
@@ -40,7 +38,7 @@ namespace NidcApp
                     Conference.OnNext(JsonConvert.DeserializeObject<Conference>(File.ReadAllText(localPath)));
                     return;
                 }
-                catch (Exception exc) { }
+                catch (Exception) { }
             }
 
             var assembly = typeof(AppState).GetTypeInfo().Assembly;
@@ -57,11 +55,11 @@ namespace NidcApp
             {
                 try
                 {
-                    var json = await httpClient.GetStringAsync("https://www.nidevconf.com/app/data.json");
+                    var json = await httpClient.GetStringAsync("https://www.nidevconf.com/app/data2.json");
                     Conference.OnNext(JsonConvert.DeserializeObject<Conference>(json));
                     File.WriteAllText(localPath, json);
                 }
-                catch (Exception exc) { }
+                catch (Exception) { }
             }
         }
     }

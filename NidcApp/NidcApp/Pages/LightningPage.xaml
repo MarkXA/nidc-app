@@ -1,19 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <pages:LightningPageBase xmlns="http://xamarin.com/schemas/2014/forms"
-                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                        xmlns:pages="clr-namespace:NidcApp.Pages;assembly=NidcApp"
-                        xmlns:controls="clr-namespace:NidcApp.Controls;assembly=NidcApp"
-                        xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-                        x:Class="NidcApp.Pages.LightningPage"
-                        Title="Lightning talks">
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:pages="clr-namespace:NidcApp.Pages;assembly=NidcApp"
+                         xmlns:controls="clr-namespace:NidcApp.Controls;assembly=NidcApp"
+                         xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+                         x:Class="NidcApp.Pages.LightningPage"
+                         Title="Lightning talks">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Text="{Binding IntroText.Value}" Margin="15,5" />
-        <ListView Grid.Row="1" ItemsSource="{Binding Sessions.Value}" HasUnevenRows="True" ItemSelected="OnSessionSelected">
+        <ListView Grid.Row="1" ItemsSource="{Binding Sessions.Value}" HasUnevenRows="True"
+                  ItemSelected="OnSessionSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

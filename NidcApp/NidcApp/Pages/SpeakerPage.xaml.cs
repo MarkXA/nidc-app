@@ -19,7 +19,7 @@ namespace NidcApp.Pages
         }
     }
 
-    public class SpeakerPageBase : BaseContentPage<SpeakerViewModel, string>
+    public class SpeakerPageBase : BaseContentPage<SpeakerPageVm, string>
     {
         protected SpeakerPageBase(string SpeakerId) : base(SpeakerId) { }
     }

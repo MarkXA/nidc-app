@@ -32,7 +32,9 @@ namespace NidcApp.MxaUi
             return task.ToObservable().Subscribe(onNext);
         }
 
-        public static IObservable<(T1 val1, T2 val2)> ObserveTogether<T1, T2>(this IObservable<T1> o1, IObservable<T2> o2)
+        public static IObservable<(T1 val1, T2 val2)> ObserveTogether<T1, T2>(
+            this IObservable<T1> o1,
+            IObservable<T2> o2)
         {
             return o1.CombineLatest(o2, (val1, val2) => (val1, val2));
         }

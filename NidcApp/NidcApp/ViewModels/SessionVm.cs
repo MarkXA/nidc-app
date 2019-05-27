@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NidcApp.Model;
+using NidcApp.Models;
 
 namespace NidcApp.ViewModels
 {
@@ -16,11 +16,11 @@ namespace NidcApp.ViewModels
         {
             return new SessionVm
             {
-                SessionId = model.SessionId,
-                Room = conf.Rooms.FirstOrDefault(r => r.RoomId == model.RoomId),
-                Title = model.Title,
-                Description = model.Description,
-                Speakers = conf.Speakers.Where(s => s.SpeakerId == model.Speaker || s.SpeakerId == model.Speaker2)
+                SessionId = model.id,
+                Room = conf.rooms.FirstOrDefault(r => r.id == model.room),
+                Title = model.title,
+                Description = model.description,
+                Speakers = conf.speakers.Where(s => model.speakers.Contains(s.id))
                     .Select(s => SpeakerVm.FromSpeaker(s, conf))
                     .ToList()
             };

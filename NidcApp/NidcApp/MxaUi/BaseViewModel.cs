@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reactive.Disposables;
-using Xamarin.Forms;
 
 namespace NidcApp.MxaUi
 {
@@ -14,8 +13,7 @@ namespace NidcApp.MxaUi
         private Action<CompositeDisposable> activateAction;
         private Func<IEnumerable<IDisposable>> getActivateDisposables;
 
-        public INavigation Navigation;
-        public TParameter Parameter;
+        public TParameter Parameter { get; set; }
 
         protected BaseViewModel() : this(new CompositeDisposable(), true) { }
 

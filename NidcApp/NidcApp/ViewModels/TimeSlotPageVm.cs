@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using NidcApp.MxaUi;
+using Xamarin.Forms;
 
 namespace NidcApp.ViewModels
 {
-    public class TimeSlotViewModel : BaseViewModel<string>
+    [QueryProperty("Parameter", "slotId")]
+    public class TimeslotPageVm : BaseViewModel<string>
     {
-        public MxaProperty<TimeSlotVm> TimeSlot { get; } = new MxaProperty<TimeSlotVm>();
+        public MxaProperty<TimeslotVm> Timeslot { get; } = new MxaProperty<TimeslotVm>();
 
-        public TimeSlotViewModel()
+        public TimeslotPageVm()
         {
             WhenActivated(
                 disposables =>
@@ -16,12 +18,12 @@ namespace NidcApp.ViewModels
                     AppState.Conference.SubscribeUi(
                         conf =>
                         {
-                            TimeSlot.Value =
-                                conf.TimeSlots.Where(ts => ts.TimeSlotId == Parameter)
-                                    .Select(ts => TimeSlotVm.FromTimeSlot(ts, conf))
-                                    .FirstOrDefault() ?? new TimeSlotVm
+                            Timeslot.Value =
+                                conf.timeslots.Where(ts => ts.id == Parameter)
+                                    .Select(ts => TimeslotVm.FromTimeslot(ts, conf))
+                                    .FirstOrDefault() ?? new TimeslotVm
                                 {
-                                    TimeSlotId = "",
+                                    TimeslotId = "",
                                     Description = "All quiet!",
                                     HasDescription = true,
                                     Title = "No conference",

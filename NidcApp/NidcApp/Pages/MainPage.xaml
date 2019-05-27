@@ -1,6 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:NidcApp.Pages"
+       x:Class="NidcApp.Pages.MainPage"
+       x:Name="TheShell" FlyoutBehavior="Disabled">
+    <FlyoutItem Title="NIDC 2019">
+        <Tab Title="NIDC 2019">
+            <ShellContent Title="NIDC 2019">
+                <pages:IntroPage />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <!--<Shell.Items>
+        <FlyoutItem Title="Agenda">
+            <Tab Title="Agenda">
+                <ShellContent Title="Agenda">
+                    <pages:AgendaPage />
+                </ShellContent>
+            </Tab>
+        </FlyoutItem>
+        <FlyoutItem Title="Lightning talks">
+            <Tab Title="Lightning talks">
+                <ShellContent Title="Lightning talks" ContentTemplate="{DataTemplate pages:LightningPage}" />
+            </Tab>
+        </FlyoutItem>
+    </Shell.Items>-->
+</Shell>
+<!--<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:pages="clr-namespace:NidcApp.Pages;assembly=NidcApp"
                   x:Class="NidcApp.Pages.MainPage">
@@ -16,4 +43,4 @@
         </NavigationPage>
     </MasterDetailPage.Detail>
 
-</MasterDetailPage>
+</MasterDetailPage>-->

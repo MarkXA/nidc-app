@@ -27,5 +27,5 @@ namespace NidcApp.Pages
         }
     }
 
-    public class LightningPageBase : BaseContentPage<LightningViewModel, Unit>{}
+    public class LightningPageBase : BaseContentPage<LightningPageVm, Unit> { }
 }

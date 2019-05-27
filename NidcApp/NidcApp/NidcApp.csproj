@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -13,19 +13,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Model\generated.json" />
-    <None Remove="Model\seed.json" />
+    <None Remove="Models\generated.json" />
+    <None Remove="Models\seed.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Model\seed.json" />
+    <EmbeddedResource Include="Models\seed.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="System.Reactive" Version="4.0.0" />
+    <PackageReference Include="Markdig" Version="0.17.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.Reactive" Version="4.1.5" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
-    <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,8 +45,8 @@
     <Compile Update="Pages\SpeakerPage.xaml.cs">
       <DependentUpon>SpeakerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\TimeSlotPage.xaml.cs">
-      <DependentUpon>TimeSlotPage.xaml</DependentUpon>
+    <Compile Update="Pages\TimeslotPage.xaml.cs">
+      <DependentUpon>TimeslotPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -60,9 +61,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\WebViewPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\FlyoutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using NidcApp.Model;
+﻿using NidcApp.Models;
 
 namespace NidcApp.ViewModels
 {
@@ -14,10 +13,10 @@ namespace NidcApp.ViewModels
         {
             return new SpeakerVm
             {
-                SpeakerId = model.SpeakerId,
-                Title = model.Title,
-                ImageUrl = $"https://www.nidevconf.com{model.Image}",
-                Description = model.Description
+                SpeakerId = model.id,
+                Title = model.title,
+                ImageUrl = model.speakerImage,
+                Description = model.description
             };
         }
     }
