@@ -12,16 +12,30 @@ namespace NidcApp.Pages
         public TimeslotPage()
         {
             InitializeComponent();
+
+            WhenActivated(
+                () => new[]
+                {
+                    ViewModel.Timeslot.SubscribeUi(
+                        vm =>
+                        {
+                            ListView.IsVisible = vm.HasSessions && Device.RuntimePlatform == Device.iOS;
+                            CollectionView.IsVisible = vm.HasSessions && Device.RuntimePlatform != Device.iOS;
+                        })
+                });
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                ListView.Margin = new Thickness(0, 70, 0, 0);
+            }
+
+            ListView.ItemTemplate = new DataTemplate(
+                () => new ViewCell() {View = (View)CollectionView.ItemTemplate.CreateContent()});
         }
 
         public TimeslotPage(string timeSlotId) : base(timeSlotId)
         {
             InitializeComponent();
-        }
-
-        private void OnSessionSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            ((ListView)sender).SelectedItem = null;
         }
 
         private void OnSpeakerTapped(object sender, EventArgs e)

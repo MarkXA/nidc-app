@@ -10,10 +10,6 @@ namespace NidcApp
     {
         public App()
         {
-#if DEBUG
-            //LiveReload.Init();
-#endif
-
             InitializeComponent();
 
             MainPage = new MainPage();
@@ -31,7 +27,7 @@ namespace NidcApp
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            AppState.Init();
         }
     }
 }

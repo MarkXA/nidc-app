@@ -13,17 +13,17 @@ namespace NidcApp.Pages
         public LightningPage()
         {
             InitializeComponent();
-        }
 
-        private void OnSessionSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            ((ListView)sender).SelectedItem = null;
+            ListView.IsVisible = Device.RuntimePlatform == Device.iOS;
+            CollectionView.IsVisible = Device.RuntimePlatform != Device.iOS;
+            ListView.ItemTemplate = new DataTemplate(
+                () => new ViewCell() {View = (View)CollectionView.ItemTemplate.CreateContent()});
         }
 
         private void OnSpeakerTapped(object sender, EventArgs e)
         {
             if ((sender as BindableObject)?.BindingContext is SpeakerVm speaker)
-                AppState.NavigatePage.OnNext(new SpeakerPage(speaker.SpeakerId));
+                Shell.Current.GoToAsync($"speaker?speakerId={speaker.SpeakerId}");
         }
     }
 

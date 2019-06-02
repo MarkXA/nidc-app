@@ -7,23 +7,22 @@ namespace NidcApp.ViewModels
 {
     public class LightningPageVm : BaseViewModel<Unit>
     {
-        public MxaProperty<string> IntroText { get; } = "";
         public MxaProperty<List<SessionVm>> Sessions { get; } = new MxaProperty<List<SessionVm>>();
 
         public LightningPageVm()
         {
             WhenActivated(
-                disposables =>
+                () => new[]
                 {
                     AppState.Conference.SubscribeUi(
                         conf =>
                         {
-                            IntroText.Value = conf.lightningIntro;
                             Sessions.Value = conf.sessions.Where(s => s.lightning)
                                 .OrderBy(s => s.order)
-                                .Select(s => SessionVm.FromSession(s, conf))
+                                .Select(
+                                    (s, n) => SessionVm.FromSession(s, conf, conf.lightningslots[n].title))
                                 .ToList();
-                        });
+                        })
                 });
         }
     }

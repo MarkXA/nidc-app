@@ -37,11 +37,14 @@
     <Compile Update="Controls\AgendaLine.xaml.cs">
       <DependentUpon>AgendaLine.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\WebContentPage.xaml.cs">
+      <DependentUpon>WebContentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pages\LightningPage.xaml.cs">
       <DependentUpon>LightningPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\GeneralPage.xaml.cs">
-      <DependentUpon>GeneralPage.xaml</DependentUpon>
+    <Compile Update="Pages\MarkdownContentPage.xaml.cs">
+      <DependentUpon>MarkdownContentPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Pages\SpeakerPage.xaml.cs">
       <DependentUpon>SpeakerPage.xaml</DependentUpon>
@@ -61,7 +64,7 @@
     <EmbeddedResource Update="Pages\IntroPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\GeneralPage.xaml">
+    <EmbeddedResource Update="Pages\MarkdownContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

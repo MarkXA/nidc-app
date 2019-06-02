@@ -6,111 +6,64 @@
                          xmlns:controls="clr-namespace:NidcApp.Controls;assembly=NidcApp"
                          xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
                          x:Class="NidcApp.Pages.LightningPage"
-                         Title="Lightning talks">
+                         Title="Lightning talks"
+                         BackgroundColor="LightGray">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" Text="{Binding IntroText.Value}" Margin="15,5" />
-    <CollectionView Grid.Row="1" ItemsSource="{Binding Sessions.Value}">
-      <CollectionView.ItemTemplate>
-        <DataTemplate>
-          <ContentView Padding="20,10">
-            <Frame HasShadow="True" BorderColor="Gray">
-              <StackLayout>
-                <controls:AgendaHeading Text="{Binding Title}" />
-                <Grid Margin="15,0,15,5">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition Width="*" />
-                  </Grid.ColumnDefinitions>
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                  </Grid.RowDefinitions>
-                  <StackLayout Grid.Column="0" Grid.Row="0">
-                    <controls:ItemsControl ItemsSource="{Binding Speakers}">
-                      <controls:ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                          <abstractions:CircleImage Source="{Binding ImageUrl}"
-                                                    WidthRequest="50" HeightRequest="50"
-                                                    Aspect="AspectFill">
-                            <abstractions:CircleImage.GestureRecognizers>
-                              <TapGestureRecognizer Tapped="OnSpeakerTapped" />
-                            </abstractions:CircleImage.GestureRecognizers>
-                          </abstractions:CircleImage>
-                        </DataTemplate>
-                      </controls:ItemsControl.ItemTemplate>
-                    </controls:ItemsControl>
-                  </StackLayout>
-                  <StackLayout Grid.Column="1" Grid.Row="0">
-                    <Label Text="{Binding Title}" FontAttributes="Bold" />
-                    <controls:ItemsControl ItemsSource="{Binding Speakers}">
-                      <controls:ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                          <Label Text="{Binding Title}" FontAttributes="Bold">
-                            <Label.GestureRecognizers>
-                              <TapGestureRecognizer Tapped="OnSpeakerTapped" />
-                            </Label.GestureRecognizers>
-                          </Label>
-                        </DataTemplate>
-                      </controls:ItemsControl.ItemTemplate>
-                    </controls:ItemsControl>
-                  </StackLayout>
-                  <controls:MarkdownView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Markdown="{Binding Description}" />
-                </Grid>
-              </StackLayout>
-            </Frame>
-          </ContentView>
-        </DataTemplate>
-      </CollectionView.ItemTemplate>
-    </CollectionView>
-        <!--<ListView Grid.Row="1" ItemsSource="{Binding Sessions.Value}" HasUnevenRows="True"
-                  ItemSelected="OnSessionSelected">
-            <ListView.ItemTemplate>
+        <ListView x:Name="ListView" ItemsSource="{Binding Sessions.Value}" SelectionMode="None" HasUnevenRows="true"
+                  CachingStrategy="RetainElement" BackgroundColor="Transparent" SeparatorVisibility="None" />
+        <CollectionView x:Name="CollectionView" ItemsSource="{Binding Sessions.Value}">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout>
-                            <controls:ItemsControl ItemsSource="{Binding Speakers}">
-                                <controls:ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <controls:AgendaHeading Text="{Binding Title}" />
-                                    </DataTemplate>
-                                </controls:ItemsControl.ItemTemplate>
-                            </controls:ItemsControl>
-                            <Grid Margin="15,0,15,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <StackLayout Grid.Column="0" Grid.Row="0">
-                                    <controls:ItemsControl ItemsSource="{Binding Speakers}">
-                                        <controls:ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <abstractions:CircleImage Source="{Binding ImageUrl}"
-                                                                          WidthRequest="50" HeightRequest="50"
-                                                                          Aspect="AspectFill">
-                                                    <abstractions:CircleImage.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnSpeakerTapped" />
-                                                    </abstractions:CircleImage.GestureRecognizers>
-                                                </abstractions:CircleImage>
-                                            </DataTemplate>
-                                        </controls:ItemsControl.ItemTemplate>
-                                    </controls:ItemsControl>
-                                </StackLayout>
-                                <StackLayout Grid.Column="1" Grid.Row="0">
-                                    <Label Text="{Binding Title}" FontAttributes="Bold" />
-                                    <Label Text="{Binding Description}" />
-                                </StackLayout>
-                            </Grid>
-                        </StackLayout>
-                    </ViewCell>
+                    <ContentView Padding="20,10">
+                        <Frame HasShadow="True" BorderColor="Gray">
+                            <StackLayout>
+                                <controls:AgendaHeading Text="{Binding Heading}" />
+                                <Grid Margin="15,0,15,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Column="0" Grid.Row="0">
+                                        <controls:ItemsControl ItemsSource="{Binding Speakers}">
+                                            <controls:ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <abstractions:CircleImage Source="{Binding ImageUrl}"
+                                                                              WidthRequest="50" HeightRequest="50"
+                                                                              Aspect="AspectFill">
+                                                        <abstractions:CircleImage.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="OnSpeakerTapped" />
+                                                        </abstractions:CircleImage.GestureRecognizers>
+                                                    </abstractions:CircleImage>
+                                                </DataTemplate>
+                                            </controls:ItemsControl.ItemTemplate>
+                                        </controls:ItemsControl>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1" Grid.Row="0">
+                                        <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                        <controls:ItemsControl ItemsSource="{Binding Speakers}">
+                                            <controls:ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Label Text="{Binding Title}" FontAttributes="Bold">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="OnSpeakerTapped" />
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+                                                </DataTemplate>
+                                            </controls:ItemsControl.ItemTemplate>
+                                        </controls:ItemsControl>
+                                    </StackLayout>
+                                    <controls:MarkdownView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+                                                           Markdown="{Binding Description}" />
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </ContentView>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>-->
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </pages:LightningPageBase>

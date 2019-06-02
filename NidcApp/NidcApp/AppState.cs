@@ -25,21 +25,24 @@ namespace NidcApp
                 return;
             initialised = true;
 
-            localPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "conference.json");
+            localPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "2019.json");
 
             Refresh.Subscribe(OnRefresh);
 
             Refresh.OnNext(Unit.Default);
 
-            //if (File.Exists(localPath))
-            //{
-            //    try
-            //    {
-            //        //Conference.OnNext(JsonConvert.DeserializeObject<Conference>(File.ReadAllText(localPath)));
-            //        return;
-            //    }
-            //    catch (Exception) { }
-            //}
+#if DEBUG
+#else
+            if (File.Exists(localPath))
+            {
+                try
+                {
+                    Conference.OnNext(JsonConvert.DeserializeObject<Conference>(File.ReadAllText(localPath)));
+                    return;
+                }
+                catch (Exception) { }
+            }
+#endif
 
             var assembly = typeof(AppState).GetTypeInfo().Assembly;
             using (var stream = assembly.GetManifestResourceStream("NidcApp.Models.seed.json"))
@@ -55,9 +58,12 @@ namespace NidcApp
             {
                 try
                 {
-                    //var json = await httpClient.GetStringAsync("https://www.nidevconf.com/app/data2.json");
-                    //Conference.OnNext(JsonConvert.DeserializeObject<Conference>(json));
-                    //File.WriteAllText(localPath, json);
+#if DEBUG
+#else
+                    var json = await httpClient.GetStringAsync("https://www.nidevconf.com/app/2019.json");
+                    Conference.OnNext(JsonConvert.DeserializeObject<Conference>(json));
+                    File.WriteAllText(localPath, json);
+#endif
                 }
                 catch (Exception) { }
             }

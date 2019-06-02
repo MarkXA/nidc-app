@@ -8,65 +8,63 @@
                         x:Class="NidcApp.Pages.TimeslotPage"
                         Title="{Binding Timeslot.Value.Title}"
                         BackgroundColor="LightGray">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
-    <Label Grid.Row="0" Text="{Binding Timeslot.Value.Description}" IsVisible="{Binding Timeslot.Value.HasDescription}"
-           FontSize="20" FontAttributes="Bold" Margin="15,5" />
-    <CollectionView Grid.Row="1" ItemsSource="{Binding Timeslot.Value.Sessions}" IsVisible="{Binding Timeslot.Value.HasSessions}">
-      <CollectionView.ItemTemplate>
-        <DataTemplate>
-          <ContentView Padding="20,10">
-            <Frame HasShadow="True" BorderColor="Gray">
-              <StackLayout>
-                <controls:AgendaHeading Text="{Binding Room.title}" />
-                <Grid Margin="15,0,15,5">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition Width="*" />
-                  </Grid.ColumnDefinitions>
-                  <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                  </Grid.RowDefinitions>
-                  <StackLayout Grid.Column="0" Grid.Row="0">
-                    <controls:ItemsControl ItemsSource="{Binding Speakers}">
-                      <controls:ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                          <abstractions:CircleImage Source="{Binding ImageUrl}"
-                                                    WidthRequest="50" HeightRequest="50"
-                                                    Aspect="AspectFill">
-                            <abstractions:CircleImage.GestureRecognizers>
-                              <TapGestureRecognizer Tapped="OnSpeakerTapped" />
-                            </abstractions:CircleImage.GestureRecognizers>
-                          </abstractions:CircleImage>
-                        </DataTemplate>
-                      </controls:ItemsControl.ItemTemplate>
-                    </controls:ItemsControl>
-                  </StackLayout>
-                  <StackLayout Grid.Column="1" Grid.Row="0">
-                    <Label Text="{Binding Title}" FontAttributes="Bold" />
-                    <controls:ItemsControl ItemsSource="{Binding Speakers}">
-                      <controls:ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                          <Label Text="{Binding Title}" FontAttributes="Bold">
-                            <Label.GestureRecognizers>
-                              <TapGestureRecognizer Tapped="OnSpeakerTapped" />
-                            </Label.GestureRecognizers>
-                          </Label>
-                        </DataTemplate>
-                      </controls:ItemsControl.ItemTemplate>
-                    </controls:ItemsControl>
-                  </StackLayout>
-                  <controls:MarkdownView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Markdown="{Binding Description}" />
-                </Grid>
-              </StackLayout>
-            </Frame>
-          </ContentView>
-        </DataTemplate>
-      </CollectionView.ItemTemplate>
-    </CollectionView>
-  </Grid>
+    <Grid>
+        <ListView x:Name="ListView" ItemsSource="{Binding Timeslot.Value.Sessions}" SelectionMode="None"
+                  HasUnevenRows="true" CachingStrategy="RetainElement" BackgroundColor="Transparent"
+                  SeparatorVisibility="None" />
+        <CollectionView x:Name="CollectionView" ItemsSource="{Binding Timeslot.Value.Sessions}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView Padding="20,10">
+                        <Frame HasShadow="True" BorderColor="Gray">
+                            <StackLayout>
+                                <controls:AgendaHeading Text="{Binding Room.title}" />
+                                <Grid Margin="15,0,15,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Column="0" Grid.Row="0">
+                                        <controls:ItemsControl ItemsSource="{Binding Speakers}">
+                                            <controls:ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <abstractions:CircleImage Source="{Binding ImageUrl}"
+                                                                              WidthRequest="50" HeightRequest="50"
+                                                                              Aspect="AspectFill">
+                                                        <abstractions:CircleImage.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="OnSpeakerTapped" />
+                                                        </abstractions:CircleImage.GestureRecognizers>
+                                                    </abstractions:CircleImage>
+                                                </DataTemplate>
+                                            </controls:ItemsControl.ItemTemplate>
+                                        </controls:ItemsControl>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1" Grid.Row="0">
+                                        <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                        <controls:ItemsControl ItemsSource="{Binding Speakers}">
+                                            <controls:ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Label Text="{Binding Title}" FontAttributes="Bold">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="OnSpeakerTapped" />
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+                                                </DataTemplate>
+                                            </controls:ItemsControl.ItemTemplate>
+                                        </controls:ItemsControl>
+                                    </StackLayout>
+                                    <controls:MarkdownView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+                                                           Markdown="{Binding Description}" />
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </pages:TimeslotPageBase>

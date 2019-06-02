@@ -13,6 +13,11 @@ namespace NidcApp.Pages
         public AgendaPage()
         {
             InitializeComponent();
+
+            ListView.IsVisible = Device.RuntimePlatform == Device.iOS;
+            CollectionView.IsVisible = Device.RuntimePlatform != Device.iOS;
+            ListView.ItemTemplate = new DataTemplate(
+                () => new ViewCell() {View = (View)CollectionView.ItemTemplate.CreateContent()});
         }
 
         private void ItemTapped(object sender, EventArgs e)

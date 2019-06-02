@@ -3,7 +3,7 @@ using NidcApp.MxaUi;
 
 namespace NidcApp.ViewModels
 {
-    public class GeneralPageVm : BaseViewModel<ContentPage>
+    public class GeneralPageVm : BaseViewModel<InformationPage>
     {
         public readonly MxaProperty<string> Title = "";
         public readonly MxaProperty<string> Markdown = "";

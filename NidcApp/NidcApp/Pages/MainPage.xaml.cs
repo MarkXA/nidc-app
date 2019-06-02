@@ -28,7 +28,12 @@ namespace NidcApp.Pages
                     AddPage("Lightning talks", () => new LightningPage(), "icon_lightning.png");
                     foreach (var page in conf.contentpages)
                     {
-                        AddPage(page.title, () => new GeneralPage(page), "icon_info.png");
+                        AddPage(
+                            page.title,
+                            () => string.IsNullOrWhiteSpace(page.markdown)
+                                ? (ContentPage)new WebContentPage(page)
+                                : new MarkdownContentPage(page),
+                            "icon_info.png");
                     }
 
                     Routing.RegisterRoute("timeslot", typeof(TimeslotPage));

@@ -3,14 +3,13 @@ using NidcApp.MxaUi;
 using NidcApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ContentPage = NidcApp.Models.ContentPage;
 
 namespace NidcApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GeneralPage : GeneralPageBase
+    public partial class WebContentPage : WebContentPageBase
     {
-        public GeneralPage(ContentPage h) : base(h)
+        public WebContentPage(InformationPage h) : base(h)
         {
             InitializeComponent();
 
@@ -24,20 +23,13 @@ namespace NidcApp.Pages
                             HtmlView.IsVisible = !string.IsNullOrWhiteSpace(html);
                             if (!string.IsNullOrWhiteSpace(html))
                                 HtmlView.Source = new HtmlWebViewSource {Html = html};
-                        }),
-                    ViewModel.Markdown.SubscribeUi(
-                        markdown =>
-                        {
-                            ScrollView.IsVisible = !string.IsNullOrWhiteSpace(markdown);
-                            if (!string.IsNullOrWhiteSpace(markdown))
-                                MarkdownView.Markdown = markdown;
                         })
                 });
         }
     }
 
-    public class GeneralPageBase : BaseContentPage<GeneralPageVm, ContentPage>
+    public class WebContentPageBase : BaseContentPage<GeneralPageVm, InformationPage>
     {
-        protected GeneralPageBase(ContentPage h) : base(h) { }
+        protected WebContentPageBase(InformationPage h) : base(h) { }
     }
 }
