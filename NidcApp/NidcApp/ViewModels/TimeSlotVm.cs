@@ -27,7 +27,7 @@ namespace NidcApp.ViewModels
                     .ToList(),
                 IsPlenary = model.plenary
             };
-            result.HasDescription = !string.IsNullOrWhiteSpace(result.Description) && !result.IsPlenary;
+            result.HasDescription = !string.IsNullOrWhiteSpace(result.Description);
             result.HasSessions = result.Sessions.Any();
 
             return result;

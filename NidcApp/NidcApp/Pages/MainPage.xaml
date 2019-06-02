@@ -4,43 +4,19 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:pages="clr-namespace:NidcApp.Pages"
        x:Class="NidcApp.Pages.MainPage"
-       x:Name="TheShell" FlyoutBehavior="Disabled">
-    <FlyoutItem Title="NIDC 2019">
+       x:Name="TheShell">
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="#78D0FF">
+                <Image Source="nidc.png" HeightRequest="80" Aspect="AspectFit" HorizontalOptions="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    <FlyoutItem Title="NIDC 2019" Icon="nidc.png">
         <Tab Title="NIDC 2019">
             <ShellContent Title="NIDC 2019">
                 <pages:IntroPage />
             </ShellContent>
         </Tab>
     </FlyoutItem>
-    <!--<Shell.Items>
-        <FlyoutItem Title="Agenda">
-            <Tab Title="Agenda">
-                <ShellContent Title="Agenda">
-                    <pages:AgendaPage />
-                </ShellContent>
-            </Tab>
-        </FlyoutItem>
-        <FlyoutItem Title="Lightning talks">
-            <Tab Title="Lightning talks">
-                <ShellContent Title="Lightning talks" ContentTemplate="{DataTemplate pages:LightningPage}" />
-            </Tab>
-        </FlyoutItem>
-    </Shell.Items>-->
 </Shell>
-<!--<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
-                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                  xmlns:pages="clr-namespace:NidcApp.Pages;assembly=NidcApp"
-                  x:Class="NidcApp.Pages.MainPage">
-
-    <MasterDetailPage.Master>
-        <pages:FlyoutPage />
-    </MasterDetailPage.Master>
-    <MasterDetailPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
-                <pages:IntroPage />
-            </x:Arguments>
-        </NavigationPage>
-    </MasterDetailPage.Detail>
-
-</MasterDetailPage>-->

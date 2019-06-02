@@ -31,18 +31,18 @@ namespace NidcApp
 
             Refresh.OnNext(Unit.Default);
 
-            if (File.Exists(localPath))
-            {
-                try
-                {
-                    Conference.OnNext(JsonConvert.DeserializeObject<Conference>(File.ReadAllText(localPath)));
-                    return;
-                }
-                catch (Exception) { }
-            }
+            //if (File.Exists(localPath))
+            //{
+            //    try
+            //    {
+            //        //Conference.OnNext(JsonConvert.DeserializeObject<Conference>(File.ReadAllText(localPath)));
+            //        return;
+            //    }
+            //    catch (Exception) { }
+            //}
 
             var assembly = typeof(AppState).GetTypeInfo().Assembly;
-            using (var stream = assembly.GetManifestResourceStream("NidcApp.Model.seed.json"))
+            using (var stream = assembly.GetManifestResourceStream("NidcApp.Models.seed.json"))
             using (var reader = new StreamReader(stream))
             {
                 Conference.OnNext(JsonConvert.DeserializeObject<Conference>(reader.ReadToEnd()));
@@ -55,9 +55,9 @@ namespace NidcApp
             {
                 try
                 {
-                    var json = await httpClient.GetStringAsync("https://www.nidevconf.com/app/data2.json");
-                    Conference.OnNext(JsonConvert.DeserializeObject<Conference>(json));
-                    File.WriteAllText(localPath, json);
+                    //var json = await httpClient.GetStringAsync("https://www.nidevconf.com/app/data2.json");
+                    //Conference.OnNext(JsonConvert.DeserializeObject<Conference>(json));
+                    //File.WriteAllText(localPath, json);
                 }
                 catch (Exception) { }
             }

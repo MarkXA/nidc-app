@@ -22,28 +22,34 @@ namespace NidcApp.Pages
                     foreach (var item in TheShell.Items.Where(si => si.Title != "NIDC 2019").ToList())
                         TheShell.Items.Remove(item);
 
-                    AddPage("Agenda", () => new AgendaPage(), "agenda");
-                    AddPage("On now", () => new TimeslotPage(GetNowId(conf)));
-                    AddPage("On next", () => new TimeslotPage(GetNextId(conf)));
-                    AddPage("Lightning talks", () => new LightningPage());
-                    foreach (var page in conf.htmlpages)
+                    AddPage("Agenda", () => new AgendaPage(), "icon_agenda.png", "agenda");
+                    AddPage("On now", () => new TimeslotPage(GetNowId(conf)), "icon_now.png");
+                    AddPage("On next", () => new TimeslotPage(GetNextId(conf)), "icon_next.png");
+                    AddPage("Lightning talks", () => new LightningPage(), "icon_lightning.png");
+                    foreach (var page in conf.contentpages)
                     {
-                        AddPage(page.title, () => new WebViewPage(page));
+                        AddPage(page.title, () => new GeneralPage(page), "icon_info.png");
                     }
+
+                    Routing.RegisterRoute("timeslot", typeof(TimeslotPage));
+                    Routing.RegisterRoute("speaker", typeof(SpeakerPage));
+
+                    //TheShell.Navigated += (sender, args) => TheShell.FlyoutIsPresented = false;
                 });
         }
 
-        private void AddPage(string title, Func<object> content, string route = null)
+        private void AddPage(string title, Func<object> content, string iconPath = null, string route = null)
         {
             var tab = new Tab();
             var shellContent = new ShellContent
             {
+                //Content = content(),
                 ContentTemplate = new DataTemplate(content),
                 Route = route ?? title.Replace(" ", "").ToLowerInvariant()
             };
 
             tab.Items.Add(shellContent);
-            var flyoutItem = new FlyoutItem {Title = title};
+            var flyoutItem = new FlyoutItem {Title = title, Icon = ImageSource.FromFile(iconPath)};
             flyoutItem.Items.Add(tab);
             TheShell.Items.Insert(TheShell.Items.Count - 1, flyoutItem);
         }

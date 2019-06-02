@@ -30,7 +30,10 @@ namespace NidcApp.MxaUi
             };
         }
 
-        protected BaseContentPage() : this(default) { }
+        protected BaseContentPage() : this(default)
+        {
+            Visual = VisualMarker.Material;
+        }
 
         protected IDisposable WhenChanged<T1>(IObservable<T1> o1, Action<T1> action)
         {

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<pages:GeneralPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:controls="clr-namespace:NidcApp.Controls;assembly=NidcApp"
+                       xmlns:pages="clr-namespace:NidcApp.Pages;assembly=NidcApp"
+                       x:Class="NidcApp.Pages.GeneralPage">
+    <Grid>
+        <ScrollView x:Name="ScrollView">
+            <controls:MarkdownView x:Name="MarkdownView" />
+        </ScrollView>
+        <controls:ZoomWebView x:Name="HtmlView" />
+    </Grid>
+</pages:GeneralPageBase>

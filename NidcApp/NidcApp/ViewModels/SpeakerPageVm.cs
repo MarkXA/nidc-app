@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using NidcApp.MxaUi;
+using Xamarin.Forms;
 
 namespace NidcApp.ViewModels
 {
+    [QueryProperty("Parameter", "speakerId")]
     public class SpeakerPageVm : BaseViewModel<string>
     {
         public MxaProperty<SpeakerVm> Speaker { get; } = new MxaProperty<SpeakerVm>();

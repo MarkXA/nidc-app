@@ -532,23 +532,25 @@ namespace NidcApp.Controls
     {
         public MarkdownTheme()
         {
-            Paragraph = new MarkdownStyle {Attributes = FontAttributes.None, FontSize = 12};
+            const float baseSize = 14;
 
-            Heading1 = new MarkdownStyle {Attributes = FontAttributes.Bold, BorderSize = 1, FontSize = 26};
+            Paragraph = new MarkdownStyle {Attributes = FontAttributes.None, FontSize = baseSize};
 
-            Heading2 = new MarkdownStyle {Attributes = FontAttributes.Bold, BorderSize = 1, FontSize = 22};
+            Heading1 = new MarkdownStyle {Attributes = FontAttributes.Bold, BorderSize = 1, FontSize = baseSize + 5};
 
-            Heading3 = new MarkdownStyle {Attributes = FontAttributes.Bold, FontSize = 20};
+            Heading2 = new MarkdownStyle {Attributes = FontAttributes.Bold, BorderSize = 1, FontSize = baseSize + 4};
 
-            Heading4 = new MarkdownStyle {Attributes = FontAttributes.Bold, FontSize = 18};
+            Heading3 = new MarkdownStyle {Attributes = FontAttributes.Bold, FontSize = baseSize + 3};
 
-            Heading5 = new MarkdownStyle {Attributes = FontAttributes.Bold, FontSize = 16};
+            Heading4 = new MarkdownStyle {Attributes = FontAttributes.Bold, FontSize = baseSize + 2};
 
-            Heading6 = new MarkdownStyle {Attributes = FontAttributes.Bold, FontSize = 14};
+            Heading5 = new MarkdownStyle {Attributes = FontAttributes.Bold, FontSize = baseSize + 1};
 
-            Link = new MarkdownStyle {Attributes = FontAttributes.None, FontSize = 12};
+            Heading6 = new MarkdownStyle {Attributes = FontAttributes.Bold, FontSize = baseSize};
 
-            Code = new MarkdownStyle {Attributes = FontAttributes.None, FontSize = 12};
+            Link = new MarkdownStyle {Attributes = FontAttributes.None, FontSize = baseSize};
+
+            Code = new MarkdownStyle {Attributes = FontAttributes.None, FontSize = baseSize};
 
             Quote = new MarkdownStyle
             {

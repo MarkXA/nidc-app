@@ -3,17 +3,19 @@ using NidcApp.MxaUi;
 
 namespace NidcApp.ViewModels
 {
-    public class WebViewPageVm : BaseViewModel<HtmlPage>
+    public class GeneralPageVm : BaseViewModel<ContentPage>
     {
         public readonly MxaProperty<string> Title = "";
+        public readonly MxaProperty<string> Markdown = "";
         public readonly MxaProperty<string> Html = "";
 
-        public WebViewPageVm()
+        public GeneralPageVm()
         {
             WhenActivated(
                 disposables =>
                 {
                     Title.Value = Parameter.title;
+                    Markdown.Value = Parameter.markdown;
                     Html.Value = Parameter.html;
                 });
         }

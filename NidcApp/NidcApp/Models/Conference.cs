@@ -10,6 +10,6 @@ namespace NidcApp.Models
         public IList<Speaker> speakers { get; set; }
         public IList<Room> rooms { get; set; }
         public IList<Timeslot> timeslots { get; set; }
-        public IList<HtmlPage> htmlpages { get; set; }
+        public IList<ContentPage> contentpages { get; set; }
     }
 }

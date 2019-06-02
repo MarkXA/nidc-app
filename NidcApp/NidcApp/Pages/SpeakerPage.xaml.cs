@@ -8,7 +8,12 @@ namespace NidcApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SpeakerPage : SpeakerPageBase
     {
-        public SpeakerPage(string SpeakerId) : base(SpeakerId)
+        public SpeakerPage()
+        {
+            InitializeComponent();
+        }
+
+        public SpeakerPage(string speakerId) : base(speakerId)
         {
             InitializeComponent();
         }
@@ -21,6 +26,7 @@ namespace NidcApp.Pages
 
     public class SpeakerPageBase : BaseContentPage<SpeakerPageVm, string>
     {
-        protected SpeakerPageBase(string SpeakerId) : base(SpeakerId) { }
+        protected SpeakerPageBase() { }
+        protected SpeakerPageBase(string speakerId) : base(speakerId) { }
     }
 }

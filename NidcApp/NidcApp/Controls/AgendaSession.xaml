@@ -5,7 +5,7 @@
       x:Class="NidcApp.Controls.AgendaSession"
       Margin="15,5">
     <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="75" />
+        <ColumnDefinition Width="50" />
         <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
     <Label x:Name="RoomLabel" Grid.Column="0" FontAttributes="Bold" VerticalOptions="Start" />

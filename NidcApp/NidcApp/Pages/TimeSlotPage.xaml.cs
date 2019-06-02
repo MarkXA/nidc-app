@@ -27,7 +27,7 @@ namespace NidcApp.Pages
         private void OnSpeakerTapped(object sender, EventArgs e)
         {
             if ((sender as BindableObject)?.BindingContext is SpeakerVm speaker)
-                AppState.NavigatePage.OnNext(new SpeakerPage(speaker.SpeakerId));
+                Shell.Current.GoToAsync($"speaker?speakerId={speaker.SpeakerId}");
         }
     }
 

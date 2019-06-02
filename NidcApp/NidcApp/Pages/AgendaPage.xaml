@@ -5,30 +5,33 @@
                       xmlns:controls="clr-namespace:NidcApp.Controls;assembly=NidcApp"
                       xmlns:pages="clr-namespace:NidcApp.Pages;assembly=NidcApp"
                       x:Class="NidcApp.Pages.AgendaPage"
-                      Title="Agenda">
-    <Grid>
-        <CollectionView ItemsSource="{Binding Timeslots.Value}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ItemTapped" />
-                        </StackLayout.GestureRecognizers>
-                        <controls:AgendaHeading Text="{Binding Title}" />
-                        <controls:AgendaSession Room="Plenary" Title="{Binding Description}"
-                                                IsVisible="{Binding IsPlenary}" />
-                        <controls:AgendaLine Text="{Binding Description}" IsVisible="{Binding HasDescription}" />
-                        <controls:ItemsControl ItemsSource="{Binding Sessions}">
-                            <controls:ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <controls:AgendaSession Room="{Binding Room.abbreviation}" Title="{Binding Title}"
-                                                            SessionId="{Binding SessionId}" />
-                                </DataTemplate>
-                            </controls:ItemsControl.ItemTemplate>
-                        </controls:ItemsControl>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>
+                      Title="Agenda"
+                      BackgroundColor="LightGray">
+  <Grid>
+    <CollectionView ItemsSource="{Binding Timeslots.Value}">
+      <CollectionView.ItemTemplate>
+        <DataTemplate>
+          <ContentView Padding="20,10">
+            <Frame HasShadow="True" BorderColor="Gray">
+              <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ItemTapped" />
+              </Frame.GestureRecognizers>
+              <StackLayout>
+                <controls:AgendaHeading Text="{Binding Title}" />
+                <controls:AgendaLine Text="{Binding Description}" IsVisible="{Binding HasDescription}" />
+                <controls:ItemsControl ItemsSource="{Binding Sessions}">
+                  <controls:ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <controls:AgendaSession Room="{Binding Room.abbreviation}" Title="{Binding Title}"
+                                              SessionId="{Binding SessionId}" />
+                    </DataTemplate>
+                  </controls:ItemsControl.ItemTemplate>
+                </controls:ItemsControl>
+              </StackLayout>
+            </Frame>
+          </ContentView>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+  </Grid>
 </pages:AgendaPageBase>

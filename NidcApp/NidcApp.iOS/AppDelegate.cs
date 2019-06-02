@@ -21,6 +21,7 @@ namespace NidcApp.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Forms.SetFlags("CollectionView_Experimental");
             Forms.Init();
             ImageCircleRenderer.Init();
 
